@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Lists current directory contents, displaying only part after first dash using a for loop
+
+for file in *; do
+  # Ignore hidden files starting with '.'
+  [[ "$file" == .* ]] && continue
+  # Extract part after first dash, or whole name if no dash
+  echo "${file#*-}"
+done
