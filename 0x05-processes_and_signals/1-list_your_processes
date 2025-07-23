@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
-# List all running processes with user, status, and command info
+# This script displays a comprehensive list of all running processes with hierarchy
 
-ps -eo user,stat,comm
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command --sort=ppid,pid | \
+awk '
+BEGIN {
+    printf "%-10s %-5s %-5s %-5s %-5s %-8s %-6s %-8s %-6s %-10s %-20s\n", 
+           "USER", "PID", "%CPU", "%MEM", "VSZ", "RSS", "TTY", "STAT", "START", "TIME", "COMMAND"
+}
+NR > 1 {
+    pid=$2
+    ppid=$3
+    indent=""
+    for (i = 0; i < depth[ppid]; i++) indent = indent "  "
+    depth[pid] = depth[ppid] + 1
+    printf "%-10s %-5s %-5s %-5s %-5s %-8s %-6s %-8s %-6s %-10s %s%s\n", 
+           $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, indent, $11
+}
+'
