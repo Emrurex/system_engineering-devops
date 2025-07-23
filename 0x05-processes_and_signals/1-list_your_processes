@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Print exactly 10 chars: header "USER" and first process user
+# Display only USER header and first process owner username
 
 echo "USER"
 ps -eo user --no-headers | head -n 1
