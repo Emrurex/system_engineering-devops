@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Infinite loop printing "To infinity and beyond" every 2 sec
-# On SIGTERM prints "I am invincible!!!" and continues
+# Infinite loop printing message; prints 'I am invincible!!!' on SIGTERM and continues
 
 trap 'echo "I am invincible!!!"' SIGTERM
 
