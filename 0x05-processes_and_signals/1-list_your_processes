@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Display a comprehensive list of all currently running processes
 # including user, PID, CPU/mem usage, and command
 # with a tree-style hierarchy to visualize parent-child relationships.
