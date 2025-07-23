@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# A Bash script that traps SIGTERM and says "I am invincible!!!"
+# Infinite loop printing "To infinity and beyond" every 2 sec
+# On SIGTERM prints "I am invincible!!!" and continues
 
 trap 'echo "I am invincible!!!"' SIGTERM
 
-while true
-do
-    echo "To infinity and beyond"
-    sleep 2
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
 done
